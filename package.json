@@ -13,7 +13,7 @@
     "test:frontend": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@frontend\"",
     "test:regression": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@regresion\"",
     "test:smoke": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@smoketest\"",
-    "open": "start-server-and-test serve http://127.0.0.1:8080 \"cypress open --e2e --browser electron\"",
+    "open": "start-server-and-test serve http://127.0.0.1:8080 \"cypress open --e2e\"",
     "allure:open": "allure open"
   },
   "keywords": [

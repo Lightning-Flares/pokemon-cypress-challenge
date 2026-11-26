@@ -13,6 +13,8 @@ export default defineConfig({
         // Un solo index.html que se puede abrir directo en el navegador.
         singleFile: true,
         reportLanguage: "es",
+        // Agrupa por el Feature de Gherkin (allure-cypress lo guarda como parentSuite).
+        groupBy: ["parentSuite"],
       },
     },
   },

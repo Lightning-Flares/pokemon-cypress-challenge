@@ -117,8 +117,6 @@ cualquier host, así que cambiar una no rompe las pruebas de la otra. El proyect
 
 ## Uso de inteligencia artificial
 
-> ✏️ Revisa esta sección y ajústala con tus palabras antes de entregar.
-
 **Herramienta:** Claude (Anthropic), como asistente durante todo el desarrollo.
 
 **Para qué la usé**
@@ -130,7 +128,7 @@ cualquier host, así que cambiar una no rompe las pruebas de la otra. El proyect
   siguiendo la arquitectura y las convenciones que le indiqué.
 - Revisar el código como en un pull request y simplificarlo.
 
-**Qué decidí yo** ✏️
+**Qué decidí yo**
 
 - La arquitectura, basada en la que uso en mi trabajo con Behave: Gherkin en inglés y en primera
   persona, archivos en `snake_case`, tags `@regresion` y `@smoketest`, y hooks como equivalente del `environment.py`.
@@ -140,12 +138,13 @@ cualquier host, así que cambiar una no rompe las pruebas de la otra. El proyect
 
 **Cómo verifiqué el resultado**
 
-- Ejecuté cada script npm y revisé el reporte de Allure.
-- Simulé la instalación del evaluador: copié solo los archivos del repositorio a una carpeta limpia
-  y corrí `npm ci` y `npm test` siguiendo este README.
-- Forcé fallas para confirmar que las pruebas detectan errores reales: datos incorrectos en el fixture,
-  un bug inyectado en la página (pedir otro ID) y una `apiUrl` inválida (fallaron solo las pruebas de API).
-- Comprobé con `curl` las respuestas reales de la PokéAPI.
+- Ejecuté la suite completa y por separado las pruebas de API y de frontend, y revisé el reporte de Allure.
+- Forcé una falla cambiando el ID consultado en TC01: la prueba falló con "el id no coincide",
+  revisé la falla en Allure y al restaurarlo volvió a pasar.
+- Con ayuda de la IA: se simuló la instalación del evaluador en una carpeta limpia (`npm ci` + `npm test`
+  siguiendo este README), se inyectó un bug en la página (pedir otro ID) y se usó una `apiUrl` inválida
+  para confirmar que las pruebas detectan errores reales (con la `apiUrl` inválida fallaron solo las de API).
+  También se comprobaron con `curl` las respuestas reales de la PokéAPI.
 
 **Problemas que aparecieron y cómo se resolvieron**
 
