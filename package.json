@@ -1,0 +1,42 @@
+{
+  "name": "pokemon-cypress-challenge",
+  "version": "1.0.0",
+  "description": "Challenge técnico QA Automation: pruebas de API REST e integración frontend + backend contra PokéAPI con Cypress, Cucumber/Gherkin y Page Object Model.",
+  "private": true,
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0 || >=26.0.0"
+  },
+  "scripts": {
+    "serve": "http-server ./app -a 127.0.0.1 -p 8080 -c-1 --silent",
+    "test": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run\"",
+    "test:api": "cypress run --expose tags=@api",
+    "test:frontend": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@frontend\"",
+    "test:regression": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@regresion\"",
+    "test:smoke": "start-server-and-test serve http://127.0.0.1:8080 \"cypress run --expose tags=@smoketest\"",
+    "open": "start-server-and-test serve http://127.0.0.1:8080 \"cypress open --e2e --browser electron\"",
+    "allure:open": "allure open"
+  },
+  "keywords": [
+    "cypress",
+    "cucumber",
+    "gherkin",
+    "pokeapi",
+    "qa-automation"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^28.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "allure": "^3.33.0",
+    "allure-cypress": "^3.15.0",
+    "cypress": "^16.4.0",
+    "cypress-on-fix": "^1.1.0",
+    "esbuild": "^0.28.2",
+    "http-server": "^14.1.1",
+    "start-server-and-test": "^3.0.13"
+  },
+  "allowScripts": {
+    "cypress@16.4.0": true,
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "charizard": {
+    "id": 6,
+    "name": "charizard",
+    "types": ["fire", "flying"],
+    "abilities": ["blaze", "solar-power"]
+  },
+  "pikachu": {
+    "id": 25,
+    "name": "pikachu",
+    "types": ["electric"],
+    "abilities": ["static", "lightning-rod"]
+  }
+}

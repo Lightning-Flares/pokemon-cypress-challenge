@@ -1,0 +1,99 @@
+/* Paleta basada en el diseño del Asesor de Items. */
+:root {
+  --bg: #0a0f16; --bg2: #0e151f; --panel: #121b27;
+  --line: #223044; --line2: #2c3d55;
+  --text: #e8edf3; --dim: #8a99ab; --faint: #5d6c80;
+  --gold: #d8b26a; --gold2: #f1d595; --gold-dim: #8a7140;
+  --err: #ef6b5e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  background: radial-gradient(120% 60% at 50% -10%, #17263a 0%, var(--bg) 55%) fixed, var(--bg);
+  color: var(--text);
+  font: 14px/1.45 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.app { max-width: 520px; margin: 0 auto; padding: 0 16px 32px; }
+
+.top { display: flex; align-items: center; gap: 10px; padding: 18px 0 14px; font-weight: 700; font-size: 15px; }
+.gem {
+  width: 18px; height: 18px; transform: rotate(45deg); border: 2px solid var(--gold); border-radius: 4px;
+  background: linear-gradient(135deg, rgba(216,178,106,.35), transparent);
+}
+
+.card {
+  background: linear-gradient(180deg, var(--panel), var(--bg2));
+  border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 12px;
+}
+.label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.label::after { content: ""; flex: 1; height: 1px; background: rgba(216,178,106,.25); }
+
+/* Búsqueda */
+.row {
+  display: flex; align-items: center; gap: 8px; background: #0b1118; border: 1px solid var(--line2);
+  border-radius: 10px; padding: 4px 4px 4px 12px;
+}
+.row:focus-within { border-color: var(--gold-dim); box-shadow: 0 0 0 3px rgba(216,178,106,.12); }
+.row.invalid { border-color: var(--err); box-shadow: 0 0 0 3px rgba(239,107,94,.12); }
+.hash { color: var(--faint); font-weight: 700; }
+input {
+  flex: 1; min-width: 0; background: none; border: 0; outline: 0; color: var(--text);
+  font: 600 18px inherit; font-family: inherit; padding: 8px 0;
+}
+input::placeholder { color: var(--faint); font-weight: 500; }
+button {
+  border: 0; border-radius: 8px; padding: 9px 18px; cursor: pointer;
+  background: linear-gradient(180deg, #e2c07c, #b8914c); color: #1a1408; font: 600 13px inherit; font-family: inherit;
+}
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.hint { margin-top: 8px; font-size: 12px; color: var(--faint); }
+
+/* Estados */
+.status { display: flex; align-items: center; gap: 8px; color: var(--dim); margin: 4px 2px 12px; }
+.spinner {
+  width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line2); border-top-color: var(--gold);
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error {
+  margin-bottom: 12px; padding: 10px 12px; border-radius: 10px; font-weight: 600; font-size: 13px;
+  color: #ffb4a6; border: 1px solid #6a3128; background: #24130f;
+}
+.empty { text-align: center; color: var(--faint); padding: 28px 0; }
+
+/* Resultado */
+.result { display: flex; align-items: center; gap: 16px; border-color: rgba(216,178,106,.35); }
+.art {
+  width: 120px; height: 120px; flex: none; object-fit: contain; border-radius: 50%;
+  background: radial-gradient(circle, #1e2a3a 0%, #0b1118 70%); border: 2px solid var(--gold);
+}
+.num { color: var(--gold2); font-weight: 700; font-size: 13px; }
+.name { font-size: 24px; font-weight: 700; text-transform: capitalize; margin: 2px 0 8px; overflow-wrap: anywhere; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; }
+.chips li {
+  font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; text-transform: capitalize;
+  color: var(--c, var(--dim));
+  border: 1px solid color-mix(in srgb, var(--c, var(--dim)) 40%, transparent);
+  background: color-mix(in srgb, var(--c, var(--dim)) 10%, #0b1118);
+}
+
+/* Un color por tipo; el borde y el fondo se derivan de él */
+.t-normal { --c: #d6d3c4; } .t-fire { --c: #ffb08a; } .t-water { --c: #9cc0ff; }
+.t-electric { --c: #ffe27a; } .t-grass { --c: #9fe3a0; } .t-ice { --c: #b4f0ec; }
+.t-fighting { --c: #ff9d8f; } .t-poison { --c: #dba6f0; } .t-ground { --c: #ecd08f; }
+.t-flying { --c: #c3b4ff; } .t-psychic { --c: #ffa3c4; } .t-bug { --c: #cfe37a; }
+.t-rock { --c: #d9c88a; } .t-ghost { --c: #b9a6e0; } .t-dragon { --c: #a99bff; }
+.t-dark { --c: #c4b2a6; } .t-steel { --c: #c4d2e0; } .t-fairy { --c: #ffbfe6; }
+
+@media (max-width: 420px) {
+  .result { flex-direction: column; text-align: center; }
+  .chips { justify-content: center; }
+}

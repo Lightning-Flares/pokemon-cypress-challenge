@@ -1,0 +1,6 @@
+{
+  // Extensión oficial de Cucumber: dónde están los features y los step definitions,
+  // para resaltar el Gherkin, autocompletar steps y navegar con Ctrl + clic.
+  "cucumber.features": ["cypress/e2e/**/*.feature"],
+  "cucumber.glue": ["cypress/support/step_definitions/**/*.js"]
+}

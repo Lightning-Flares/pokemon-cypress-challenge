@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de Pokémon</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <span class="gem" aria-hidden="true"></span>Buscador de Pokémon
+      </header>
+
+      <main>
+        <section class="card">
+          <h1 class="label">Buscar por ID</h1>
+          <form data-cy="search-form" novalidate autocomplete="off">
+            <label for="pokemon-id" class="sr-only">ID del Pokémon</label>
+            <div class="row">
+              <span class="hash" aria-hidden="true">#</span>
+              <input
+                id="pokemon-id"
+                data-cy="pokemon-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="25"
+                aria-describedby="ayuda-id"
+              />
+              <button type="submit" data-cy="search-button">Buscar</button>
+            </div>
+            <p id="ayuda-id" class="hint">Solo números, del 1 al 99999.</p>
+          </form>
+        </section>
+
+        <p data-cy="loading" class="status" role="status" hidden>
+          <span class="spinner" aria-hidden="true"></span>Buscando…
+        </p>
+        <p data-cy="error-message" class="error" role="alert" hidden></p>
+
+        <section data-cy="pokemon-card" class="card result" aria-live="polite" hidden>
+          <img data-cy="pokemon-sprite" class="art" alt="" width="120" height="120" />
+          <div>
+            <div class="num">#<span data-cy="pokemon-id"></span></div>
+            <h2 data-cy="pokemon-name" class="name"></h2>
+            <ul data-cy="pokemon-types" class="chips"></ul>
+          </div>
+        </section>
+
+        <p data-cy="empty-state" class="empty">Escribe un ID para buscar un Pokémon.</p>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
